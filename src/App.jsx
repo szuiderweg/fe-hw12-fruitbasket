@@ -5,8 +5,16 @@ function App() {
 
   return (
     <>
-        <img src={fruitlogo} alt="fruitlogo"/>
-        <h1>Fruitmand bezorgservice</h1>
+        <main className="outer-container">
+            <img src={fruitlogo} alt="fruitlogo"/>
+            <h1>Kies fruitigheid </h1>
+            <span className="fruit-container">
+                <h2> &#127827; Aardbeien</h2>
+                <button type="button">-</button>
+                <p> 00 </p>
+                <button type="button">+</button>
+            </span>
+        </main>
     </>
   )
 }
