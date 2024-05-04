@@ -16,15 +16,35 @@ body {
     border: 2px solid lightgrey;
     border-radius: 10px;
     padding: 1em;
-
+    width: 19em;
+    margin-bottom: 0.8em;
 
     display: flex;
     align-items: baseline;
+    justify-content: flex-end;
     gap: 0.5em;
 
 }
+.fruit-container h2{
+    flex-grow: 1;
+}
 
-button{
+.fruit-container button{
     height: 2.5em;
     width: 2.5em;
+}
+
+.big-button{
+    padding: 0.5em;
+    width: 10em;
+    font-weight: bold;
+    font-size: 1em;
+    background-color: palegreen;
+    border: 2px solid #50C878;
+    border-radius: 10px;
+}
+
+.big-button:hover{
+    background-color: #50C878;
+    color: seashell;
 }
