@@ -16,6 +16,8 @@ function App() {
         zipcode:'',
         deliveryType:'weekly',
         deliveryTime:'daytime',
+        remark:'',
+        agreement:false,
 });
 
     function resetFruit()
@@ -31,7 +33,7 @@ function App() {
         e.preventDefault();
         console.log(`fruit ordered: ${strawberries} strawberries, ${bananas} bananas, ${apples} apples and ${kiwis} kiwis.`);
         console.log("orderdetails:")
-        console.log(`firstname: ${formValues.firstname}, lastname: ${formValues.lastname}, age: ${formValues.age}, zipcode: ${formValues.zipcode}, deliveryType: ${formValues.deliveryType}, deliveryTime: ${formValues.deliveryTime}, `);
+        console.log(`firstname: ${formValues.firstname}, lastname: ${formValues.lastname}, age: ${formValues.age}, zipcode: ${formValues.zipcode}, deliveryType: ${formValues.deliveryType}, deliveryTime: ${formValues.deliveryTime}, customer remark: ${formValues.remark},agreement with terms: ${formValues.agreement} `);
     }
 
     //generieke handler om live velden bij te werken van tekstvelden en die daarop lijken
@@ -179,14 +181,27 @@ function App() {
                         </label>
                     </div>
 
-                    {/*<label>Opmerking*/}
-                    {/*    <textarea id="remark-field" rows="4" cols="50"></textarea>*/}
-                    {/*</label>*/}
+                    <label>Opmerking
+                        <textarea name="remark"
+                                  rows="4" cols="50"
+                                  value={formValues.remark}
+                                  onChange={handleChange}
+                        ></textarea>
+                    </label>
 
-                    {/*<label><input type="checkbox" /> Ik ga akkoord met de voorwaarden </label>*/}
+                    <label><input type="checkbox"
+                                  name="agreement"
+                                  checked={formValues.agreement}
+                                  //*custom onchange handler*/
+                                  onChange={()=>{setFormValues({
+                                      ...formValues,
+                                      agreement: !formValues.agreement,
+                                  })}}
+                    /> Ik ga akkoord met de voorwaarden </label>
 
                     <button
                         type="submit"
+                        disabled={!formValues.agreement}
                     >Verzenden</button>
 
                 </fieldset>
