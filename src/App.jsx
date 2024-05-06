@@ -14,6 +14,8 @@ function App() {
         lastname:'',
         age:0,
         zipcode:'',
+        deliveryType:'weekly',
+        deliveryTime:'daytime',
 });
 
     function resetFruit()
@@ -29,7 +31,7 @@ function App() {
         e.preventDefault();
         console.log(`fruit ordered: ${strawberries} strawberries, ${bananas} bananas, ${apples} apples and ${kiwis} kiwis.`);
         console.log("orderdetails:")
-        console.log(`firstname: ${formValues.firstname}, lastname: ${formValues.lastname}, age: ${formValues.age}, zipcode: ${formValues.zipcode}` )
+        console.log(`firstname: ${formValues.firstname}, lastname: ${formValues.lastname}, age: ${formValues.age}, zipcode: ${formValues.zipcode}, deliveryType: ${formValues.deliveryType}, deliveryTime: ${formValues.deliveryTime}, `);
     }
 
     //generieke handler om live velden bij te werken van tekstvelden en die daarop lijken
@@ -147,30 +149,35 @@ function App() {
                         />
                     </label>
 
-                    {/*<label> Bezorgfrequentie*/}
-                    {/*    <select*/}
-                    {/*        id="delivery-type-dropdown"*/}
-                    {/*        name="delivery-type"*/}
-                    {/*        // onSelect={}*/}
-                    {/*    >*/}
-                    {/*        <option value="weekly">iedere week</option>*/}
-                    {/*        <option value="biweekly">om de week</option>*/}
-                    {/*        <option value="monthly">maandelijks</option>*/}
-                    {/*    </select>*/}
-                    {/*</label>*/}
-                    {/*<div>*/}
-                    {/*    <label> Overdag*/}
-                    {/*        <input type="radio"*/}
-                    {/*        name="delivery-time"*/}
-                    {/*        value="Overdag"/>*/}
-                    {/*     </label>*/}
+                    <label> Bezorgfrequentie
+                        <select
+                            name="deliveryType"
+                            value={formValues.deliveryType}
+                            onChange={handleChange}
+                            >
+                            <option value="weekly" >iedere week</option>
+                            <option value="biweekly">om de week</option>
+                            <option value="monthly" >maandelijks</option>
+                        </select>
+                    </label>
 
-                    {/*    <label> 's Avonds*/}
-                    {/*        <input type="radio"*/}
-                    {/*           name="delivery-time"*/}
-                    {/*           value="'s Avonds"/>*/}
-                    {/*    </label>*/}
-                    {/*</div>*/}
+                    <div>{/* groepje radio buttons*/}
+                        <label> Overdag
+                            <input type="radio"
+                            name="deliveryTime"
+                            value="daytime"
+                            checked={formValues.deliveryTime === "daytime"}
+                            onChange={handleChange}/>
+                         </label>
+
+                        <label> 's Avonds
+                            <input type="radio"
+                             name="deliveryTime"
+                             value="evening"
+                             checked={formValues.deliveryTime === "evening"}
+                             onChange={handleChange}/>
+                        </label>
+                    </div>
 
                     {/*<label>Opmerking*/}
                     {/*    <textarea id="remark-field" rows="4" cols="50"></textarea>*/}
@@ -182,10 +189,8 @@ function App() {
                         type="submit"
                     >Verzenden</button>
 
-
                 </fieldset>
             </form>
-
         </main>
     </>
   )
