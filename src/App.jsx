@@ -113,9 +113,9 @@ function App() {
                     onClick={()=>resetFruit()}
             >Reset</button>
             {/*formulier ------------------------------------------------------------*/}
-            <form onSubmit={handleSubmit}>
-                <h2>Bestellen</h2>
-                <fieldset>
+            <form onSubmit={handleSubmit} className="form-container" >
+                <h2> Bestellen</h2>
+                <fieldset className="form-fields">
                     <label> Voornaam
                         <input type="text"
                                name="firstname"
@@ -150,7 +150,8 @@ function App() {
                                onChange={handleChange}
                         />
                     </label>
-
+                </fieldset>
+                <fieldset className="form-fields">
                     <label> Bezorgfrequentie
                         <select
                             name="deliveryType"
@@ -180,14 +181,17 @@ function App() {
                              onChange={handleChange}/>
                         </label>
                     </div>
-
-                    <label>Opmerking
-                        <textarea name="remark"
-                                  rows="4" cols="50"
-                                  value={formValues.remark}
-                                  onChange={handleChange}
+                </fieldset>
+                <fieldset className="form-fields">
+                    <label htmlFor="remark-field">Opmerking</label>
+                        <textarea
+                            id="remark-field"
+                            name="remark"
+                            rows="4" cols="50"
+                            value={formValues.remark}
+                            onChange={handleChange}
                         ></textarea>
-                    </label>
+
 
                     <label><input type="checkbox"
                                   name="agreement"
@@ -199,12 +203,16 @@ function App() {
                                   })}}
                     /> Ik ga akkoord met de voorwaarden </label>
 
-                    <button
-                        type="submit"
-                        disabled={!formValues.agreement}
-                    >Verzenden</button>
 
                 </fieldset>
+               <fieldset className="form-fields">
+                <button
+                    type="submit"
+                    className="big-button"
+                    disabled={!formValues.agreement}
+                >Verzenden</button>
+            </fieldset>
+
             </form>
         </main>
     </>
